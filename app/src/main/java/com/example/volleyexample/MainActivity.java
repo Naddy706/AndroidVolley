@@ -1,9 +1,15 @@
+
 package com.example.volleyexample;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.VoiceInteractor;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -60,6 +66,35 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuInflater=getMenuInflater();
+        menuInflater.inflate(R.menu.main_menu,menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.fetch :
+                callfetch();
+            default:
+                return super.onOptionsItemSelected(item);
+
+
+        }
+    }
+
+
+
+    public void callfetch(){
+
+        Intent i =new Intent(MainActivity.this,FetchData.class);
+        startActivity(i);
+        
+    }
 
     public  void Add_Data(){
 
